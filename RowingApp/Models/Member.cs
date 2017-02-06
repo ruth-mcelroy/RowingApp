@@ -22,5 +22,7 @@ namespace RowingApp.Models
 
         public bool WeatherCaller { get; set; }
 
+        public string NameColor { get; set; }
+
     }
 }
