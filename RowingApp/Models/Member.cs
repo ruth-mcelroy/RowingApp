@@ -22,7 +22,24 @@ namespace RowingApp.Models
 
         public bool WeatherCaller { get; set; }
 
-        public string NameColor { get; set; }
+
+
+        public List<Member> GetMembers()
+        {
+            List<Member> members = new List<Member>();
+            Member emp = new Member();
+            emp.Name = "johnson";
+            emp.Phone = "0987777";
+            emp.Cox = true;
+
+            Member emp2 = new Member();
+            emp2.Name = "johnson2";
+            emp2.Phone = "0987777";
+            emp2.Cox = true;
+            members.Add(emp2);
+
+            return members;
+        }
 
     }
 }

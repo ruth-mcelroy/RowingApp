@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RowingApp.Models;
+using RowingApp.ViewModel;
 
 namespace RowingApp.Controllers
 {
@@ -23,21 +24,31 @@ namespace RowingApp.Controllers
 
         public ActionResult GetMember()
         {
-            Member emp = new Member();
-            emp.Name = "Mark";
-            emp.Email = "Marla";
-            emp.Phone = "20000";
+    MemberViewModel memberViewModel = new MemberViewModel();
 
-            if (emp.Name == "Sukesh")
-            {
-                emp.NameColor = "yellow";
-            }
-            else
-            {
-                emp.NameColor = "green";
-            }
+   Member mem = new Member();
 
-            return View("GetMember", emp);
+    List<Member> members = mem.GetMembers();
+
+    List<MemberViewModel> empViewModels = new List<MemberViewModel>();
+
+foreach (Member emp in members)
+    {
+        MemberViewModel empViewModel = new MemberViewModel();
+        empViewModel.Name = emp.Name;
+        empViewModel.Cox= emp.Cox;
+        if (emp.Cox == true)
+        {
+            empViewModel.NameColor = "green";
+        }
+        else
+        {
+            empViewModel.NameColor = "orange";
+        }
+        empViewModels.Add(empViewModel);
+    }
+
+    return View("GetMember", empViewModels);
         }
 	}
 }
